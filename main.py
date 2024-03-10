@@ -29,6 +29,7 @@ class API(QWidget):
         self.modes_button.clicked.connect(self.modes_change)
         self.modes_button.setIcon(QIcon(rf'resourses\{self.map_modes[self.current_mode]}.png'))
         self.modes_button.setIconSize(QSize(48, 48))
+        self.modes_button.setFocusPolicy(Qt.NoFocus)
 
     def getImage(self):
         """
