@@ -50,7 +50,8 @@ class API(QWidget):
         self.tags += f'~{self.ll[0]},{self.ll[1]},pm2rdm'
         print(self.tags[1:])
         map_request = (f"http://static-maps.yandex.ru/1.x/"
-                       f"?ll={self.ll[0]},{self.ll[1]}&spn={self.size},0.002&l={self.map_modes[self.current_mode]}&pt={self.tags[1:]}")
+                       f"?ll={self.ll[0]},{self.ll[1]}&spn={self.size},0.002&l={self.map_modes[self.current_mode]}"
+                       f"&pt={self.tags[1:]}")
         response = requests.get(map_request)
 
         if not response:
