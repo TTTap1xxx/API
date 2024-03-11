@@ -29,13 +29,22 @@ class API(QWidget):
         self.modes_button = QPushButton('', self)
         self.modes_button.setIcon(QIcon(rf'resourses\{self.map_modes[self.current_mode]}.png'))
         self.modes_button.setIconSize(QSize(48, 48))
-        self.line_search = QLineEdit('', self)
-        self.line_search.setGeometry(60, 0, 480, 30)
-        self.button_search = QPushButton('Поиск', self)
-        self.button_search.setGeometry(540, 0, 60, 30)
         self.modes_button.setFocusPolicy(Qt.NoFocus)
         self.modes_button.clicked.connect(self.modes_change)
+        self.line_search = QLineEdit('', self)
+        self.line_search.setGeometry(60, 0, 420, 30)
+        self.line_search.setFocusPolicy(Qt.FocusPolicy.ClickFocus)
+        self.button_search = QPushButton('Поиск', self)
+        self.button_search.setGeometry(480, 0, 60, 30)
         self.button_search.clicked.connect(self.search)
+        self.button_search.setFocusPolicy(Qt.NoFocus)
+        self.button_reset = QPushButton('Сброс', self)
+        self.button_reset.setGeometry(540, 0, 60, 30)
+        self.button_reset.clicked.connect(self.reset)
+        self.button_reset.setFocusPolicy(Qt.NoFocus)
+
+    def reset(self):
+        self.tags = ''
 
     def search(self):
         response = requests.get(f"http://geocode-maps.yandex.ru/1.x/?apikey=40d1649f-0493-4b70-98ba-98533de7710b&"
